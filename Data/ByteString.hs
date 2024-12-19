@@ -1,5 +1,6 @@
 {-# OPTIONS_HADDOCK prune #-}
 {-# LANGUAGE Trustworthy #-}
+{-# LANGUAGE CPP #-}
 
 {-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE MagicHash #-}
@@ -258,7 +259,9 @@ import qualified Data.List as List
 import qualified Data.List.NonEmpty as NE
 import Data.List.NonEmpty (NonEmpty(..))
 
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word                (Word8)
+#endif
 
 import Control.Exception        (IOException, catch, finally, assert, throwIO)
 import Control.Monad            (when)

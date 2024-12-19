@@ -20,8 +20,10 @@ import Data.Bits ((.|.), (.&.), unsafeShiftL, unsafeShiftR)
 import Data.ByteString.Builder.Internal (Builder)
 import Data.ByteString.Builder.Prim (primBounded)
 import Data.ByteString.Builder.RealFloat.Internal
+#if __GLASGOW_HASKELL__ <= 912
 import GHC.Int (Int32(..))
 import GHC.Word (Word32(..), Word64(..))
+#endif
 
 #if !PURE_HASKELL
 import GHC.Ptr (Ptr(..))

@@ -1,4 +1,5 @@
 {-# LANGUAGE ExplicitForAll #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE BangPatterns, MagicHash, UnboxedTuples #-}
@@ -36,7 +37,9 @@ module Data.ByteString.Builder.RealFloat.TableGenerator
 import GHC.Float (int2Double)
 
 import Data.Bits
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 import Numeric
 
 
@@ -204,4 +207,3 @@ double_max_inv_split :: Int -- = 291
 (double_max_split, double_max_inv_split) =
     let (m, mi) = get_range (undefined :: Double)
      in (m + 1, mi)
-

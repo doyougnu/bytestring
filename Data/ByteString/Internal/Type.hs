@@ -162,7 +162,9 @@ import Control.Exception        (assert, throw, Exception)
 
 import Data.Bits                ((.&.))
 import Data.Char                (ord)
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 
 import Data.Data                (Data(..), mkConstr, mkNoRepType, Constr, DataType, Fixity(Prefix), constrIndex)
 

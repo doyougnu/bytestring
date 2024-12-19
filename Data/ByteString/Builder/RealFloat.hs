@@ -44,6 +44,7 @@
 -- In particular, we could use the exact boundary if it is the shortest
 -- representation and the original floating number is even. To experiment with
 -- the shorter rounding, refer to
+{-# LANGUAGE CPP #-}
 -- `Data.ByteString.Builder.RealFloat.Internal.acceptBounds`. This will give us
 --
 -- >>> floatDec 1.0e23
@@ -76,7 +77,9 @@ import qualified Data.ByteString.Builder.RealFloat.F2S as RF
 import qualified Data.ByteString.Builder.RealFloat.D2S as RD
 import qualified Data.ByteString.Builder.Prim as BP
 import GHC.Float (roundTo)
+#if __GLASGOW_HASKELL__ <= 912
 import GHC.Word (Word64)
+#endif
 import GHC.Show (intToDigit)
 
 -- | Returns a rendered Float. Matches `show` in displaying in standard or
@@ -284,4 +287,3 @@ showStandard m e prec =
     mkDot rs = if null rs then mempty else char7 '.' `mappend` mconcat rs
     ds = digits m
     digitsToBuilder = fmap (char7 . intToDigit)
-

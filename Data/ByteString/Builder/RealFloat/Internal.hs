@@ -80,12 +80,18 @@ import qualified Data.ByteString.Internal.Pure as Pure
 import Foreign.C.Types
 #endif
 import Data.Char (ord)
-import GHC.Int (Int(..), Int32(..))
 import GHC.IO (IO(..), unIO)
 import GHC.Prim
 import GHC.Ptr (Ptr(..), plusPtr, castPtr)
 import GHC.Types (isTrue#)
+
+#if __GLASGOW_HASKELL__ <= 912
+import GHC.Int (Int(..), Int32(..))
 import GHC.Word (Word8, Word16(..), Word32(..), Word64(..))
+#endif
+
+import GHC.Int (Int(..))
+import GHC.Word (Word16(..), Word32(..), Word64(..))
 import qualified Foreign.Storable as S (poke)
 
 #include <ghcautoconf.h>

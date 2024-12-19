@@ -25,12 +25,17 @@ module Data.ByteString.Utils.UnalignedAccess
   ) where
 
 import Foreign.Ptr
+
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 
 
 #if HS_UNALIGNED_ADDR_PRIMOPS_AVAILABLE
 import GHC.IO (IO(..))
+#if __GLASGOW_HASKELL__ <= 912
 import GHC.Word (Word16(..), Word32(..), Word64(..))
+#endif
 import GHC.Exts
 
 unalignedWriteU16 :: Word16 -> Ptr Word8 -> IO ()
@@ -93,4 +98,3 @@ foreign import ccall unsafe "static fpstring.h fps_unaligned_write_HsDouble"
 foreign import ccall unsafe "static fpstring.h fps_unaligned_read_u64"
   unalignedReadU64 :: Ptr Word8 -> IO Word64
 #endif
-

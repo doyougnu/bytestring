@@ -3,6 +3,7 @@
 {-# LANGUAGE Trustworthy #-}
 
 {-# LANGUAGE BangPatterns #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
@@ -244,8 +245,10 @@ import Data.ByteString.Lazy.Internal
 
 import Control.Exception        (assert)
 import Control.Monad            (mplus)
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word                (Word8)
 import Data.Int                 (Int64)
+#endif
 import GHC.Stack.Types          (HasCallStack)
 import System.IO                (Handle,openBinaryFile,stdin,stdout,withBinaryFile,IOMode(..)
                                 ,hClose)

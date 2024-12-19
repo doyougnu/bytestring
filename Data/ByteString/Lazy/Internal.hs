@@ -56,8 +56,11 @@ import Prelude hiding (concat)
 
 import qualified Data.ByteString.Internal.Type as S
 
-import Data.Word (Word8)
 import Foreign.Storable (Storable(sizeOf))
+
+#if __GLASGOW_HASKELL__ <= 912
+import Data.Word (Word8)
+#endif
 
 #if MIN_VERSION_base(4,13,0)
 import Data.Semigroup   (Semigroup (sconcat, stimes))

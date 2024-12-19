@@ -1,4 +1,5 @@
 {-# LANGUAGE BangPatterns #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE Trustworthy #-}
 {-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_HADDOCK prune #-}
@@ -253,8 +254,9 @@ import Data.ByteString.Lazy.ReadInt
 import Data.ByteString.Lazy.ReadNat
 
 import Data.ByteString.Internal (c2w,w2c,isSpaceWord8)
-
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Int (Int64)
+#endif
 import qualified Data.List as List
 
 import Prelude hiding

@@ -29,11 +29,13 @@ import Data.ByteString.Lazy.Internal
 #endif
 import Data.Bits (finiteBitSize)
 import Data.ByteString.Internal (pattern BS, plusForeignPtr)
-import Data.Word
 import Foreign.ForeignPtr (ForeignPtr)
 import Foreign.Ptr (Ptr, minusPtr, plusPtr)
 import Foreign.Storable (Storable(..))
 import Numeric.Natural (Natural)
+#if __GLASGOW_HASKELL__ <= 912
+import Data.Word
+#endif
 
 ----- Public API
 

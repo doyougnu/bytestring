@@ -1,4 +1,5 @@
 {-# LANGUAGE MagicHash #-}
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE Unsafe #-}
 
 -- |
@@ -55,7 +56,9 @@ import Foreign.C.String         (CString, CStringLen)
 
 import Control.Exception        (assert)
 
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word                (Word8)
+#endif
 
 import qualified Foreign.ForeignPtr as FC (finalizeForeignPtr)
 import qualified Foreign.Concurrent as FC (newForeignPtr)

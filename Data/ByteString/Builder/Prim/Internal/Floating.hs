@@ -22,7 +22,9 @@ module Data.ByteString.Builder.Prim.Internal.Floating
   ) where
 
 import Data.ByteString.Builder.Prim.Internal
+#if __GLASGOW_HASKELL__ <= 912
 import Data.Word
+#endif
 
 #if HS_CAST_FLOAT_WORD_OPS_AVAILABLE
 import GHC.Float (castFloatToWord32, castDoubleToWord64)
